@@ -136,7 +136,18 @@ class DoublyLinkedList:
         self.tail = node
 
     def delete(self, node):
-        pass
+        # check if head
+        if self.head == node:
+            # set next as head
+            self.head = node.next
+        # check if tail
+        if self.tail == node:
+            # set prev as tail
+            self.tail = node.prev
+        # delete node
+        node.delete()
+        # lower length by one
+        self.length -= 1
 
     def get_max(self):
         pass
