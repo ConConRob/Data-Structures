@@ -52,15 +52,18 @@ class DoublyLinkedList:
         return self.length
 
     def add_to_head(self, value):
-        # create the node
-        new_node = ListNode(value)
+
         # if first item
         if not self.head:
+            # create the node
+            new_node = ListNode(value)
+
             self.head = new_node
             self.tail = new_node
         else:
             # insert before head
             self.head.insert_before(new_node)
+            new_node = self.tail.prev
             # make new head
             self.head = new_node
         self.length += 1
@@ -82,17 +85,18 @@ class DoublyLinkedList:
         return head_node.value
 
     def add_to_tail(self, value):
-        # create new node
-        new_node = ListNode(value)
         # cover first item case
         if self.length == 0:
+            # create new node
+            new_node = ListNode(value)
             self.head = new_node
             self.tail = new_node
         # else
         else:
             # insert it after the current tail
-            self.tail.insert_after(new_node)
-        # make it the new tail
+            self.tail.insert_after(value)
+            new_node = self.tail.next
+            # make it the new tail
             self.tail = new_node
         # always add 1 to length
         self.length += 1
@@ -150,4 +154,18 @@ class DoublyLinkedList:
         self.length -= 1
 
     def get_max(self):
-        pass
+        # if nothing is in the list
+        if self.length == 0:
+            # return None
+            return None
+        highest = self.head.value
+        current_node = self.head.next
+        while current_node != None:
+            # if new highest
+            if current_node.value > highest:
+                # set new highest
+                highest = current_node.value
+            # set the next node
+            current_node = current_node.next
+        # return the highest
+        return highest
