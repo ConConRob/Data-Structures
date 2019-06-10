@@ -63,7 +63,7 @@ class DoublyLinkedList:
         else:
             # insert before head
             self.head.insert_before(new_node)
-            new_node = self.tail.prev
+            new_node = self.head.prev
             # make new head
             self.head = new_node
         self.length += 1
