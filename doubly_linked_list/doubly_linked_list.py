@@ -114,7 +114,15 @@ class DoublyLinkedList:
         return tail_node.value
 
     def move_to_front(self, node):
-        pass
+        # check if is the tail
+        if node == self.tail:
+            # set prev to new tail
+            self.tail = node.prev
+        # delete node
+        node.delete()
+        # set as head
+        self.head.insert_before(node)
+        self.head = node()
 
     def move_to_end(self, node):
         pass
