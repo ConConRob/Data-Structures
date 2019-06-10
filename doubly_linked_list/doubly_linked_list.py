@@ -125,7 +125,15 @@ class DoublyLinkedList:
         self.head = node()
 
     def move_to_end(self, node):
-        pass
+        # check if the head
+        if node == self.head:
+            # set next to new head
+            self.head = node.next
+        # delete node
+        node.delete()
+        # set as tail
+        self.tail.insert_after(node)
+        self.tail = node
 
     def delete(self, node):
         pass
