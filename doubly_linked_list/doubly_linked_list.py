@@ -125,8 +125,9 @@ class DoublyLinkedList:
         # delete node
         node.delete()
         # set as head
-        self.head.insert_before(node)
-        self.head = node()
+        self.head.insert_before(node.value)
+        self.head = self.head.prev
+        return self.head
 
     def move_to_end(self, node):
         # check if the head
