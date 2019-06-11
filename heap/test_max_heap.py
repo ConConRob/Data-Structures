@@ -18,17 +18,17 @@ class HeapTests(unittest.TestCase):
         self.heap.insert(5)
         self.assertEqual(self.heap.storage, [10, 9, 9, 6, 1, 8, 9, 5])
 
-    # def test_get_max_works(self):
-    #   self.heap.insert(6)
-    #   self.heap.insert(8)
-    #   self.heap.insert(10)
-    #   self.heap.insert(9)
-    #   self.heap.insert(1)
-    #   self.heap.insert(9)
-    #   self.heap.insert(9)
-    #   self.heap.insert(5)
-    #   self.assertEqual(self.heap.get_size(), 8)
-    #   self.assertEqual(self.heap.get_max(), 10)
+    def test_get_max_works(self):
+        self.heap.insert(6)
+        self.heap.insert(8)
+        self.heap.insert(10)
+        self.heap.insert(9)
+        self.heap.insert(1)
+        self.heap.insert(9)
+        self.heap.insert(9)
+        self.heap.insert(5)
+        self.assertEqual(self.heap.get_size(), 8)
+        self.assertEqual(self.heap.get_max(), 10)
 
     # def test_get_max_after_delete(self):
     #   self.heap.insert(6)
