@@ -55,20 +55,23 @@ class AVLTree:
         self.height = height
         return self.height
 
-    def height(self):
-
-        if self.left:
-            left_height = self.left.node.height()
-        if self.right:
-            right_height = self.right.node.height()
-        return max(left_height, right_height) + 1
     """
   Updates the balance factor on the AVLTree class
   """
 
     def update_balance(self):
-        pass
-
+        height_r = 0
+        height_l = 0
+        # if left update left and track total
+        if self.node.left:
+            self.node.left.update_balance()
+            height_l = self.node.left.height
+        # if right update right and track total
+        if self.node.right:
+            self.node.right.update_balance()
+            height_r = self.node.right.height
+        # set the balance
+        self.balance = height_r - height_l
     """
   Perform a left rotation, making the right child of this
   node the parent and making the old parent the left child
