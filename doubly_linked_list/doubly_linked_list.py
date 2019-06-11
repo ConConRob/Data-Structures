@@ -52,7 +52,6 @@ class DoublyLinkedList:
         return self.length
 
     def add_to_head(self, value):
-
         # if first item
         if not self.head:
             # create the node
