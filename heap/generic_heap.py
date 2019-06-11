@@ -51,7 +51,41 @@ class Heap:
                 index = None
 
     def _sift_down(self, index):
-        pass
+         # if index does not exist return
+        if index >= len(self.storage):
+            return None
+        while True:
+            # get children index's and values
+            i_r = right_child_i(index)
+            v_r = self.storage[i_r] if i_r < len(self.storage) else None
+            i_l = left_child_i(index)
+            v_l = self.storage[i_l] if i_l < len(self.storage) else None
+            # check which has larger value
+            i_h = None
+            v_h = None
+            if v_r is None and v_l is None:
+                break
+            elif v_r is None:
+                i_h = i_l
+                v_h = v_l
+            elif v_l is None:
+                i_h = i_r
+                v_h = v_r
+            # both values exist
+            else:
+                # check if that value is larger
+                i_h = i_r if self.comparator(v_r, v_l) else i_l
+                v_h = v_r if self.comparator(v_r, v_l) else v_l
+            # check the high value vs the current index
+            if self.comparator(v_h, self.storage[index]):
+                # swap values
+                self.storage[i_h] = self.storage[index]
+                self.storage[index] = v_h
+                # return new i of shifted down
+                index = i_h
+            # break if no swap
+            else:
+                break
 
 
 def left_child_i(i):
